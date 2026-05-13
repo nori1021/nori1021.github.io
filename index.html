@@ -1,122 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noriyuki Hatakenaka Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noriyuki Hatakenaka | Portfolio</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --primary: #1e3a5f;
+      --accent: #2563eb;
+      --soft: #eef4ff;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        h1 {
-            color: #222;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        h2 {
-            margin-top: 40px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-        }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
-        .project {
-            margin-bottom: 30px;
-        }
+    .hero {
+      background: linear-gradient(135deg, #1e3a5f, #243b53);
+      color: white;
+      padding: 56px 40px;
+      border-radius: 20px;
+      margin-bottom: 32px;
+    }
 
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
+    .hero h1 {
+      font-size: 42px;
+      margin: 0 0 10px;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    .hero p {
+      font-size: 18px;
+      color: #dbeafe;
+      margin: 0 0 24px;
+    }
 
-        ul {
-            line-height: 1.8;
-        }
-    </style>
+    .buttons a {
+      display: inline-block;
+      margin-right: 12px;
+      margin-bottom: 10px;
+      padding: 10px 16px;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    section {
+      background: var(--card);
+      padding: 32px;
+      border-radius: 18px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--primary);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .photo-placeholder {
+      height: 180px;
+      background: var(--soft);
+      border: 2px dashed #b6c7e3;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 14px;
+    }
+
+    .skill-card h3 {
+      margin-top: 0;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 28px;
+      background: #ffffff;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .time {
+      background: var(--soft);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      height: fit-content;
+      font-weight: bold;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 20px;
+    }
+
+    .visual-box {
+      min-height: 220px;
+      background: #f8fafc;
+      border: 2px dashed #b6c7e3;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+    }
+
+    .diagram {
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      font-family: Consolas, monospace;
+      white-space: pre-line;
+      color: #374151;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef4ff;
+      color: #1e3a5f;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin: 4px 4px 4px 0;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .link-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 9px 14px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .about-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
 
-<div class="container">
+    <header class="hero">
+      <h1>Noriyuki Hatakenaka</h1>
+      <p>AI Engineer / Enterprise Automation / Full Stack Development</p>
 
-    <h1>Noriyuki Hatakenaka</h1>
+      <div class="buttons">
+        <a href="https://github.com/nori1021" target="_blank">GitHub</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </header>
 
-    <p>
-        AI / Enterprise Automation / Full Stack Development
-    </p>
+    <section id="about">
+      <h2>About Me</h2>
 
-    <h2>About</h2>
+      <div class="about-grid">
+        <div class="photo-placeholder">
+          Profile Photo<br />Space
+        </div>
 
-    <p>
-        Computer Science graduate from Lakeland University.
-        Experienced in enterprise IT support, LDAP systems,
-        PowerShell automation, and AI-related development.
-    </p>
+        <div>
+          <p>
+            I am a Computer Science graduate with experience in enterprise IT support,
+            automation, AI-related development, and software engineering.
+          </p>
 
-    <h2>Skills</h2>
+          <h3>Education</h3>
+          <p>[Space Reserved: University, Degree, GPA, Graduation Year]</p>
 
-    <ul>
-        <li>Python</li>
-        <li>PowerShell</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>SQL</li>
-        <li>LDAP</li>
-        <li>Azure AI</li>
-        <li>Power Automate</li>
-    </ul>
+          <h3>Professional Experience</h3>
+          <p>[Space Reserved: Helpdesk, Enterprise IT, LDAP, Automation, Development Experience]</p>
 
-    <h2>Projects</h2>
+          <h3>Areas of Interest</h3>
+          <ul>
+            <li>AI and Speech Recognition</li>
+            <li>Enterprise Automation</li>
+            <li>Full Stack Development</li>
+            <li>Cloud-based Applications</li>
+            <li>Data Visualization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <div class="project">
-        <h3>AI Speech Recognition System</h3>
+    <section id="skills">
+      <h2>Skills</h2>
 
-        <p>
-            Personalized speech recognition and subtitle generation system
-            using Whisper and voice analysis technologies.
-        </p>
-    </div>
+      <div class="skills">
+        <div class="skill-card">
+          <h3>Languages</h3>
+          <p>Python, Kotlin, JavaScript, PowerShell, SQL</p>
+        </div>
 
-    <div class="project">
-        <h3>LDAP Search Tool</h3>
+        <div class="skill-card">
+          <h3>AI / NLP</h3>
+          <p>Whisper, Speech Recognition, NLP, TF-IDF, mT5, ML Kit</p>
+        </div>
 
-        <p>
-            Enterprise LDAP search and analysis tool built with PowerShell.
-        </p>
-    </div>
+        <div class="skill-card">
+          <h3>Cloud / Backend</h3>
+          <p>Flask, REST API, Docker, Azure Functions, Azure Table Storage</p>
+        </div>
 
-    <div class="project">
-        <h3>MarketProof News</h3>
+        <div class="skill-card">
+          <h3>Enterprise / Automation</h3>
+          <p>LDAP, Power Automate, SharePoint, VBA, Helpdesk Operations</p>
+        </div>
+      </div>
+    </section>
 
-        <p>
-            AI-powered investment news platform with trust score analysis.
-        </p>
-    </div>
+    <section id="projects">
+      <h2>Featured Projects</h2>
 
-    <h2>GitHub</h2>
+      <div class="project">
+        <div class="project-header">
+          <div>
+            <h3>Personalized Speech Recognition And Transcript Output</h3>
+            <p>
+              Personalized speech recognition and transcript output system designed
+              to reduce video editing and translation subtitle creation time.
+            </p>
+          </div>
+          <div class="time">Development Time: [Space Reserved]</div>
+        </div>
 
-    <p>
-        <a href="https://github.com/nori1021">
-            github.com/nori1021
+        <a class="link-button" href="https://github.com/nori1021/Personalized-Speech-Recognition-And-Transcript-Output" target="_blank">
+          View GitHub Repository
         </a>
-    </p>
 
-</div>
+        <div class="project-grid">
+          <div class="visual-box">
+            Screenshot / UI Space<br />
+            Main operation screen, transcript output, subtitle example
+          </div>
 
+          <div class="diagram">
+Audio Input
+   ↓
+Speech Recognition Engine
+   ↓
+Personalized Fine-Tuning
+   ↓
+Transcript Output
+   ↓
+Translation / Subtitle Workflow
+          </div>
+        </div>
+
+        <h3>Technologies Used</h3>
+        <span class="tag">Python</span>
+        <span class="tag">Whisper</span>
+        <span class="tag">Speech Recognition</span>
+        <span class="tag">Audio Processing</span>
+        <span class="tag">NLP</span>
+
+        <h3>Purpose</h3>
+        <p>
+          To reduce the time required for translation subtitle creation during video editing.
+        </p>
+
+        <h3>Technical Challenges</h3>
+        <ul>
+          <li>Long processing time for speech recognition and transcript generation</li>
+          <li>Manual work required for fine-tuning speaker-specific data</li>
+          <li>Improving recognition accuracy for specific speakers</li>
+          <li>Balancing processing speed and transcript quality</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <div>
+            <h3>Multi-Language Summary API</h3>
+            <p>
+              REST API for multilingual text summarization designed to generate
+              concise summaries for an integrated news platform.
+            </p>
+          </div>
+          <div class="time">Development Time: [Space Reserved]</div>
+        </div>
+
+        <a class="link-button" href="https://github.com/nori1021/multi-language-summary-api" target="_blank">
+          View GitHub Repository
+        </a>
+
+        <div class="project-grid">
+          <div class="visual-box">
+            API Result Visualization Space<br />
+            Input text, summary output, API response example
+          </div>
+
+          <div class="diagram">
+News Article Input
+   ↓
+Text Preprocessing
+   ↓
+TF-IDF / mT5 Summarization
+   ↓
+Summary Generation
+   ↓
+REST API Response
+          </div>
+        </div>
+
+        <h3>Technologies Used</h3>
+        <span class="tag">Python</span>
+        <span class="tag">Flask</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Docker</span>
+        <span class="tag">TF-IDF</span>
+        <span class="tag">mT5</span>
+        <span class="tag">NLP</span>
+
+        <h3>Purpose</h3>
+        <p>
+          To instantly display news headlines and short summaries for an integrated news website.
+        </p>
+
+        <h3>Technical Challenges</h3>
+        <ul>
+          <li>Summary accuracy decreases when the input text is too large</li>
+          <li>Balancing summary quality and API response speed</li>
+          <li>Handling multilingual text consistently</li>
+          <li>Designing the API for future integration with a news platform</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <div>
+            <h3>Security Camera Android</h3>
+            <p>
+              Android-based AI security camera application using image processing,
+              face detection, and Azure cloud integration.
+            </p>
+          </div>
+          <div class="time">Development Time: [Space Reserved]</div>
+        </div>
+
+        <a class="link-button" href="https://github.com/nori1021/security-camera-android" target="_blank">
+          View GitHub Repository
+        </a>
+
+        <div class="project-grid">
+          <div class="visual-box">
+            Screenshot / UI Space<br />
+            Camera screen, detection screen, notification screen
+          </div>
+
+          <div class="diagram">
+Android Camera
+   ↓
+ML Kit Face Detection
+   ↓
+Azure Function API
+   ↓
+Azure Table Storage
+   ↓
+Email / Alert Notification
+          </div>
+        </div>
+
+        <h3>Technologies Used</h3>
+        <span class="tag">Kotlin</span>
+        <span class="tag">Jetpack Compose</span>
+        <span class="tag">CameraX</span>
+        <span class="tag">ML Kit</span>
+        <span class="tag">Azure Functions</span>
+        <span class="tag">Azure Table Storage</span>
+        <span class="tag">Azure Communication Services</span>
+
+        <h3>Purpose</h3>
+        <p>
+          To improve home room security and build technical experience in image processing
+          and face recognition application development.
+        </p>
+
+        <h3>Technical Challenges</h3>
+        <ul>
+          <li>Connecting with external devices such as SwitchBot</li>
+          <li>Reducing the need for continuous camera operation</li>
+          <li>Balancing battery usage and real-time detection responsiveness</li>
+          <li>Managing cloud-side event logging and alert notification efficiently</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        GitHub:
+        <a href="https://github.com/nori1021" target="_blank">
+          github.com/nori1021
+        </a>
+      </p>
+
+      <p>
+        Email: [Space Reserved]
+      </p>
+
+      <p>
+        LinkedIn: [Space Reserved]
+      </p>
+
+      <p>
+        Resume: [Space Reserved for resume.pdf link]
+      </p>
+    </section>
+
+    <div class="footer">
+      © 2026 Noriyuki Hatakenaka. Portfolio Website.
+    </div>
+
+  </div>
 </body>
 </html>
