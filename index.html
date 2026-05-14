@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Noriyuki Hatakenaka — portfolio of AI, mobile, and API projects: speech recognition, multilingual summarization, and Android security camera." />
+  <title>Noriyuki Hatakenaka | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --surface: #ffffff;
+      --text: #1c2434;
+      --muted: #5c6578;
+      --border: #dfe3ea;
+      --primary: #1a2d4a;
+      --primary-soft: #e8edf5;
+      --accent: #2d4a7c;
+      --shadow: 0 1px 2px rgba(28, 36, 52, 0.06), 0 8px 24px rgba(28, 36, 52, 0.06);
+      --radius: 12px;
+      --radius-lg: 16px;
+      --font: "DM Sans", system-ui, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    header.site {
+      background: linear-gradient(145deg, #152238 0%, #1e3554 50%, #243d5e 100%);
+      color: #f0f4fa;
+      padding: 36px 32px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    header.site h1 {
+      margin: 0 0 20px;
+      font-size: clamp(1.65rem, 4vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.18);
+      text-decoration: none;
+    }
+
+    section.panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    section.panel h2 {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .about-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--primary-soft);
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(28, 36, 52, 0.08);
+    }
+    .about-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .about-text p { margin: 0 0 12px; color: var(--muted); }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      display: inline-block;
+      padding: 5px 11px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* Projects */
+    .project {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 14px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .project summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 12px;
+      align-items: start;
+      font-weight: 600;
+      color: var(--primary);
+      user-select: none;
+    }
+    .project summary::-webkit-details-marker { display: none; }
+    .project summary:hover { background: #fafbfc; }
+
+    .proj-title {
+      font-size: 1rem;
+      letter-spacing: -0.015em;
+      grid-column: 1;
+      grid-row: 1;
+      padding-right: 8px;
+    }
+    .proj-chev {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.2;
+      padding: 2px 0 0 8px;
+      font-family: var(--mono);
+    }
+    .proj-chev::before { content: "+"; }
+    .project[open] .proj-chev::before { content: "−"; }
+    .time-badge {
+      grid-column: 1;
+      grid-row: 2;
+      margin-top: 6px;
+      justify-self: start;
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      background: var(--primary-soft);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .proj-one {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 8px;
+      max-width: 100%;
+    }
+    .proj-body {
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      margin: 14px 0 16px;
+    }
+    .links-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .links-inline a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 5px 11px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      color: var(--primary);
+    }
+    .links-inline a:hover {
+      border-color: var(--accent);
+      background: #fafbfc;
+      text-decoration: none;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    .viz {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fafbfc;
+      padding: 10px;
+    }
+    .viz h4 {
+      margin: 0 0 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .viz-arch-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .viz-arch-head h4 {
+      margin: 0;
+    }
+    .arch-expand-btn {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid #2a3344;
+      border-radius: 8px;
+      background: #141a24;
+      color: #f1f5f9;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .arch-expand-btn:hover {
+      border-color: #3d4d66;
+      background: #1c2432;
+      color: #fff;
+    }
+    .arch-expand-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .arch-expand-btn svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    /* Architecture enlarge modal */
+    .arch-modal[hidden] {
+      display: none;
+    }
+    .arch-modal:not([hidden]) {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      overflow: auto;
+      padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+      -webkit-overflow-scrolling: touch;
+    }
+    .arch-modal-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(21, 34, 56, 0.55);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 0;
+    }
+    .arch-modal-panel {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: min(96vw, 1200px);
+      max-height: min(92vh, 900px);
+      width: 100%;
+      margin: 5vh auto 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 48px rgba(28, 36, 52, 0.2);
+      overflow: hidden;
+    }
+    .arch-modal-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: #fafbfc;
+      flex-shrink: 0;
+    }
+    .arch-modal-toolbar span {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .arch-modal-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--primary);
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .arch-modal-close:hover {
+      border-color: var(--accent);
+      background: #fff;
+    }
+    .arch-modal-body {
+      overflow: auto;
+      padding: 16px;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: #0b0e14;
+    }
+    .arch-modal-body svg {
+      max-width: min(1600px, 94vw) !important;
+      width: auto !important;
+      height: auto !important;
+      display: block;
+    }
+
+    /* Mermaid */
+    .mermaid-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 120px;
+      overflow-x: auto;
+      padding: 12px 10px;
+      border-radius: 8px;
+      background: #0f1218;
+      border: 1px solid #1e2530;
+    }
+    .viz-arch .mermaid-wrap {
+      background: #0b0e14;
+      border-color: #1a2230;
+    }
+    .mermaid-wrap .mermaid {
+      width: 100%;
+      max-width: 100%;
+    }
+    .mermaid-wrap svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    /* Carousel */
+    .carousel {
+      position: relative;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #f8fafc;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      opacity: 0;
+      transition: opacity 0.28s ease;
+      pointer-events: none;
+    }
+    .carousel-slide.is-active {
+      opacity: 1;
+      z-index: 1;
+      pointer-events: auto;
+    }
+    .carousel-next {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--primary);
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(28, 36, 52, 0.08);
+    }
+    .carousel-next:hover {
+      background: #fff;
+      border-color: var(--accent);
+    }
+    .carousel-next:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .carousel-next[hidden] {
+      display: none;
+    }
+    .carousel-counter {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      z-index: 2;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .carousel-counter[hidden] {
+      display: none;
+    }
+
+    .api-sample {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      line-height: 1.5;
+      margin: 0;
+      color: #374151;
+      max-height: 220px;
+      overflow: auto;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+    .field:last-child { margin-bottom: 0; }
+    .field h3 {
+      margin: 0 0 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+    }
+    .field p, .field ul {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .field ul {
+      padding-left: 1.15rem;
+    }
+    .field li { margin-bottom: 6px; }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tech-tags span {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: #eef1f6;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    footer.site {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site">
+      <h1>Noriyuki Hatakenaka</h1>
+      <nav class="nav-links">
+        <a href="https://github.com/nori1021" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="panel" id="about">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-avatar">
+          <img
+            src="images/myprofile/Noriyuki_Photo_imresizer.jpg"
+            alt="Portrait of Noriyuki Hatakenaka"
+            width="120"
+            height="120"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="about-text">
+          <p>
+            Computer science background; work spans enterprise IT support, automation, and software focused on speech, NLP, and pragmatic AI systems.
+          </p>
+          <div class="skills-row">
+            <span class="chip">Japanese / English</span>
+            <span class="chip">Python</span>
+            <span class="chip">R</span>
+            <span class="chip">Java</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML / CSS</span>
+            <span class="chip">Kotlin / Compose</span>
+            <span class="chip">Azure</span>
+            <span class="chip">Flask / REST</span>
+            <span class="chip">Whisper / PyTorch</span>
+            <span class="chip">Fine-tuning</span>
+            <span class="chip">Reinforcement learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="projects">
+      <h2>Featured projects</h2>
+
+      <!-- 1: Personalized Speech -->
+      <details class="project" open>
+        <summary>
+          <span class="proj-title">Personalized Speech Recognition &amp; Transcript Output</span>
+          <span class="proj-chev" aria-hidden="true"></span>
+          <span class="time-badge">Dev. time · ~6 months</span>
+          <span class="proj-one">Offline Whisper desktop workflow: transcribe media, edit subtitle-style segments, optional fine-tuning and JA↔EN draft translation.</span>
+        </summary>
+        <div class="proj-body">
+          <div class="meta-row">
+            <div class="links-inline">
+              <a href="https://github.com/nori1021/Personalized-Speech-Recognition-And-Transcript-Output" target="_blank" rel="noopener noreferrer">Repository</a>
+            </div>
+          </div>
+
+          <div class="field">
+            <h3>Overview</h3>
+            <p>
+              A Windows-first desktop tool chain built around <strong>OpenAI Whisper</strong> for <strong>offline</strong> transcription of audio and video.
+              Video is normalized through <strong>FFmpeg</strong> to 16&nbsp;kHz mono WAV; the leading segment drives <strong>Japanese vs English</strong> detection before a full pass.
+              Results land in editable segment lists with export to <strong>SubRip (.srt)</strong> and JSON, plus optional paths for <strong>dataset review</strong>, <strong>experimental fine-tuning</strong>, and <strong>draft machine translation</strong> for subtitle workflows.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="viz">
+              <h4>Screenshots / UI</h4>
+              <div class="carousel" data-carousel>
+                <div class="carousel-track" role="group" aria-label="Personalized Speech Recognition UI screenshots">
+                  <img
+                    class="carousel-slide is-active"
+                    data-carousel-slide
+                    src="images/Personalized-Speech-Recognition-And-Transcript-Output/speech-ui-01.png"
+                    alt="Speech app: main transcribe workspace"
+                    width="800"
+                    height="500"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                  <img
+                    class="carousel-slide"
+                    data-carousel-slide
+                    src="images/Personalized-Speech-Recognition-And-Transcript-Output/speech-ui-02.png"
+                    alt="Speech app: segment list or editor view"
+                    width="800"
+                    height="500"
+                    decoding="async"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                  <img
+                    class="carousel-slide"
+                    data-carousel-slide
+                    src="images/Personalized-Speech-Recognition-And-Transcript-Output/speech-ui-03.png"
+                    alt="Speech app: dataset review tab"
+                    width="800"
+                    height="500"
+                    decoding="async"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                  <img
+                    class="carousel-slide"
+                    data-carousel-slide
+                    src="images/Personalized-Speech-Recognition-And-Transcript-Output/speech-ui-04.png"
+                    alt="Speech app: train or translate related screen"
+                    width="800"
+                    height="500"
+                    decoding="async"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                </div>
+                <span class="carousel-counter" data-carousel-counter hidden>1 / 1</span>
+                <button type="button" class="carousel-next" data-carousel-next aria-label="Next screenshot">›</button>
+              </div>
+            </div>
+            <div class="viz viz-arch">
+              <div class="viz-arch-head">
+                <h4>Architecture</h4>
+                <button type="button" class="arch-expand-btn" data-arch-expand title="Enlarge diagram" aria-label="Enlarge architecture diagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                </button>
+              </div>
+              <div class="mermaid-wrap">
+                <div class="mermaid">
+flowchart TB
+  M[Audio or video file] --> MU[media_utils FFmpeg to 16 kHz mono WAV]
+  MU --> PSR[PersonalizedSR.py Whisper and training orchestration]
+  PSR --> WD[whisper_data JSON SRT TXT segments]
+  WD --> SA[sr_app.py entry gui Tkinter tabs]
+  SA --> TR[Transcribe tab]
+  SA --> DS[Dataset tab timeline and text fixes]
+  SA --> TN[Train tab whisper_trainer experimental]
+  SA --> TU[Translate tab translation_utils optional HF]
+  TR --> UM[user_manager isolated users name directories]
+  DS --> UM
+  TN --> UM
+  TU --> UM
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <h3>Technologies used</h3>
+            <div class="tech-tags">
+              <span>Python 3.9+</span>
+              <span>PyTorch</span>
+              <span>OpenAI Whisper</span>
+              <span>Tkinter</span>
+              <span>pygame</span>
+              <span>FFmpeg</span>
+              <span>transformers (optional)</span>
+              <span>SRT / JSON</span>
+            </div>
+          </div>
+          <div class="field">
+            <h3>Technical notes</h3>
+            <ul>
+              <li><strong>Resolving FFmpeg</strong> follows a fixed order (next to the frozen executable, PyInstaller <code>_MEIPASS</code>, repo root, then <code>PATH</code>) so packaged and dev runs behave the same.</li>
+              <li><strong>Per-user workspaces</strong> under <code>users/&lt;name&gt;/</code> isolate transcripts, media, and checkpoints without mixing profiles on disk.</li>
+              <li><strong>Fine-tuning</strong> is intentionally thin: a small PyTorch loop around Whisper modules suitable for experimentation, not a production adaptation claim—alignment, tokenizer contracts, and evaluation would need hardening for real deployments.</li>
+              <li><strong>Translation</strong> uses Hugging Face–style pipelines when enabled, producing draft bilingual subtitles rather than certified translations.</li>
+            </ul>
+          </div>
+          <div class="field">
+            <h3>Purpose (why it was built)</h3>
+            <p>To shorten the time spent creating translated subtitles during video editing, and to produce subtitle data aligned with the audio for future speech-recognition model training.</p>
+          </div>
+          <div class="field">
+            <h3>Technical challenges</h3>
+            <ul>
+              <li>Long end-to-end processing time for transcription and related steps.</li>
+              <li>Fine-tuning involves manual, hands-on work in the workflow (dataset curation and training setup).</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- 2: Multi-language summary API -->
+      <details class="project">
+        <summary>
+          <span class="proj-title">Multi-Language Summary API</span>
+          <span class="proj-chev" aria-hidden="true"></span>
+          <span class="time-badge">Dev. time · ~2 weeks</span>
+          <span class="proj-one">Self-hosted Flask service: multilingual (JA/EN/ES/ZH) summaries via fast TF-IDF or abstractive mT5, batch API, and local fine-tuning data pipeline.</span>
+        </summary>
+        <div class="proj-body">
+          <div class="meta-row">
+            <div class="links-inline">
+              <a href="https://github.com/nori1021/multi-language-summary-api" target="_blank" rel="noopener noreferrer">Repository</a>
+            </div>
+          </div>
+
+          <div class="field">
+            <h3>Overview</h3>
+            <p>
+              A <strong>local-first</strong> HTTP API for <strong>multilingual news-style summarization</strong> in Japanese, English, Spanish, and Chinese.
+              Clients choose between a <strong>low-latency extractive TF-IDF</strong> path and an <strong>abstractive mT5</strong> checkpoint (<code>csebuetnlp/mT5_multilingual_XLSum</code>), with <strong>automatic dispatch</strong>, <strong>graceful fallback</strong> when mT5 output is invalid, and rich metadata (<code>engine_used</code>, <code>fallback_used</code>, timing, compression).
+              A <strong>batch</strong> endpoint summarizes many documents in one round-trip; optional hooks collect <strong>(article, summary)</strong> pairs for later fine-tuning.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="viz">
+              <h4>Sample response (visualization)</h4>
+              <pre class="api-sample">POST /api/summarize
+{
+  "text": "The Federal Reserve signaled...",
+  "summary_type": "brief",
+  "engine": "auto"
+}
+
+→ 200
+{
+  "success": true,
+  "summary": "…",
+  "detected_language": "en",
+  "engine_used": "tfidf",
+  "fallback_used": false,
+  "compression_ratio": 0.07,
+  "processing_ms": 42
+}</pre>
+            </div>
+            <div class="viz viz-arch">
+              <div class="viz-arch-head">
+                <h4>Architecture</h4>
+                <button type="button" class="arch-expand-btn" data-arch-expand title="Enlarge diagram" aria-label="Enlarge architecture diagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                </button>
+              </div>
+              <div class="mermaid-wrap">
+                <div class="mermaid">
+flowchart TB
+  C[HTTP client] --> R[Flask app.py routes]
+  R --> V[Validate text engine language summary_type]
+  V --> SM[summarizer_manager SummarizerManager]
+  SM --> BR{Engine branch}
+  BR -->|tfidf| MS[multilingual_summarizer MultilingualSummarizer]
+  BR -->|mt5| M5[mt5_summarizer Mt5Summarizer]
+  BR -->|auto| AU[Dispatcher short text tfidf long text mt5 per README]
+  AU -->|short| MS
+  AU -->|long| M5
+  M5 --> BAD{Bad mT5 output}
+  BAD -->|yes| FB[Fallback to MultilingualSummarizer]
+  BAD -->|no| OUT[JSON summary engine_used fallback_used timing]
+  FB --> OUT
+  MS --> OUT
+  OUT --> TD[Optional training_data feedback or save_for_training]
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <h3>Technologies used</h3>
+            <div class="tech-tags">
+              <span>Python</span>
+              <span>Flask</span>
+              <span>waitress / WSGI</span>
+              <span>TF-IDF (custom)</span>
+              <span>Hugging Face mT5</span>
+              <span>Docker</span>
+              <span>pytest</span>
+              <span>GitHub Actions</span>
+            </div>
+          </div>
+          <div class="field">
+            <h3>Technical notes</h3>
+            <ul>
+              <li><strong>Language detection</strong> combines script heuristics with stop-word statistics (and optional <code>langdetect</code>) so JA / EN / ES / ZH stay disambiguated without a heavy dependency stack.</li>
+              <li><strong>Category-aware TF-IDF</strong> uses external JSON keyword lists per language, so editorial tuning does not require core code changes.</li>
+              <li><strong>Operational split</strong>: TF-IDF targets sub-100&nbsp;ms class latency on CPU for indexing-style use; mT5 trades memory and seconds-level latency for abstractive quality—clients pick per request.</li>
+              <li><strong>Fine-tuning loop</strong> is documented end-to-end: collect pairs via API, curate JSONL, split, train, then point <code>MT5_MODEL_NAME</code> at the new checkpoint.</li>
+            </ul>
+          </div>
+          <div class="field">
+            <h3>Purpose (why it was built)</h3>
+            <p>To support an integrated news-style site by surfacing headlines and short summaries instantly from full articles.</p>
+          </div>
+          <div class="field">
+            <h3>Technical challenges</h3>
+            <ul>
+              <li>When article length or volume of text is very large, summarization quality can drop compared to shorter inputs.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- 3: Security Camera Android -->
+      <details class="project">
+        <summary>
+          <span class="proj-title">Security Camera (Android + Azure Functions)</span>
+          <span class="proj-chev" aria-hidden="true"></span>
+          <span class="time-badge">Dev. time · ~1 month</span>
+          <span class="proj-one">Kotlin / Compose app with CameraX &amp; ML Kit heuristics, paired with Node.js Azure Functions for embedding-based face matching, Table Storage, and optional ACS email alerts.</span>
+        </summary>
+        <div class="proj-body">
+          <div class="meta-row">
+            <div class="links-inline">
+              <a href="https://github.com/nori1021/security-camera-android" target="_blank" rel="noopener noreferrer">Repository</a>
+            </div>
+          </div>
+
+          <div class="field">
+            <h3>Overview</h3>
+            <p>
+              An <strong>end-to-end sample</strong> pairing a <strong>Kotlin / Jetpack Compose</strong> client with <strong>Node.js Azure Functions</strong>.
+              The app uses <strong>CameraX</strong> and <strong>ML Kit</strong> heuristics to capture snapshots, sends <strong>base64 JPEGs</strong> over HTTPS for <strong>embedding-based face matching</strong> against templates in <strong>Azure Table Storage</strong>, and can raise <strong>email alerts</strong> via <strong>Azure Communication Services</strong> with optional image attachments.
+              Settings such as the function base URL live in <strong>DataStore</strong>; the README explicitly calls out that <strong>embedding a host key in the app is a demo anti-pattern</strong> for production.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="viz">
+              <h4>Screenshots / UI</h4>
+              <div class="carousel" data-carousel>
+                <div class="carousel-track" role="group" aria-label="Security Camera Android UI screenshots">
+                  <img
+                    class="carousel-slide is-active"
+                    data-carousel-slide
+                    src="images/security-camera-android/security-camera-ui-01.png"
+                    alt="Security Camera app: main camera or monitor screen"
+                    width="800"
+                    height="900"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                  <img
+                    class="carousel-slide"
+                    data-carousel-slide
+                    src="images/security-camera-android/security-camera-ui-02.png"
+                    alt="Security Camera app: settings or enrollment secondary screen"
+                    width="800"
+                    height="900"
+                    decoding="async"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                </div>
+                <span class="carousel-counter" data-carousel-counter hidden>1 / 1</span>
+                <button type="button" class="carousel-next" data-carousel-next aria-label="Next screenshot">›</button>
+              </div>
+            </div>
+            <div class="viz viz-arch">
+              <div class="viz-arch-head">
+                <h4>Architecture</h4>
+                <button type="button" class="arch-expand-btn" data-arch-expand title="Enlarge diagram" aria-label="Enlarge architecture diagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                </button>
+              </div>
+              <div class="mermaid-wrap">
+                <div class="mermaid">
+flowchart TB
+  subgraph SG1[Android SecurityCameraAndroid Kotlin Compose]
+    CX[CameraX preview and ROI]
+    ML[ML Kit person face heuristics]
+    DS[DataStore settings and enrolled IDs]
+  end
+  subgraph SG2[Node Azure Functions securitycam-functions]
+    EP[HTTPS JSON base64 JPEG analyze enroll]
+    EM[TF.js face-api embeddings cosine similarity]
+  end
+  T[(Azure Table Storage face templates)]
+  AC[Azure Communication Services Email optional]
+  CX --> SNAP[Snapshot JPEG]
+  ML --> SNAP
+  DS -.-> CX
+  SNAP -->|OkHttp| EP
+  EP --> EM
+  EM <--> T
+  EM -->|unknown ambiguous alerts| AC
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <h3>Technologies used</h3>
+            <div class="tech-tags">
+              <span>Kotlin</span>
+              <span>Jetpack Compose</span>
+              <span>CameraX</span>
+              <span>ML Kit</span>
+              <span>OkHttp</span>
+              <span>DataStore</span>
+              <span>Azure Functions (Node)</span>
+              <span>TensorFlow.js / face-api</span>
+              <span>Azure Table Storage</span>
+              <span>Azure Communication Services</span>
+            </div>
+          </div>
+          <div class="field">
+            <h3>Technical notes</h3>
+            <ul>
+              <li><strong>Enrollment</strong> averages embeddings from multiple JPEGs before upserting a row in Table Storage so a single bad frame is less likely to dominate the template.</li>
+              <li><strong>Monitor mode</strong> ties ML Kit person/face heuristics to snapshot timing and server-side <strong>cosine similarity</strong>, with cooldown logic to avoid alert storms.</li>
+              <li><strong>Backend</strong> uses TF.js + face-api style embeddings in Functions; local dev is supported via Azurite and Core Tools per repo docs.</li>
+              <li><strong>Production hardening</strong> would replace long-lived function keys in the app with a token gateway, attestation, or short-lived credentials—the sample prioritizes clarity over security theater.</li>
+            </ul>
+          </div>
+          <div class="field">
+            <h3>Purpose (why it was built)</h3>
+            <p>To improve security for a room at home, and to gain hands-on experience building an image-processing and face-recognition style application end to end.</p>
+          </div>
+          <div class="field">
+            <h3>Technical challenges</h3>
+            <ul>
+              <li>Integrating with external triggers (e.g. SwitchBot–class devices) so the phone camera does not need to stay on continuously.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="panel" id="contact">
+      <h2>Contact</h2>
+      <p style="margin:0; font-size:0.9rem; color:var(--muted);">
+        <a href="https://github.com/nori1021" target="_blank" rel="noopener noreferrer">github.com/nori1021</a>
+        <span style="color:var(--border); margin:0 8px;">|</span>
+        <a href="mailto:noriyukihatakenaka1021@gmail.com">noriyukihatakenaka1021@gmail.com</a>
+      </p>
+    </section>
+
+    <footer class="site">© 2026 Noriyuki Hatakenaka</footer>
+  </div>
+
+  <div id="arch-modal" class="arch-modal" role="dialog" aria-modal="true" aria-labelledby="arch-modal-title" hidden>
+    <button type="button" class="arch-modal-scrim" data-arch-modal-close tabindex="-1" aria-label="Close enlarged diagram"></button>
+    <div class="arch-modal-panel">
+      <header class="arch-modal-toolbar">
+        <span id="arch-modal-title">Architecture diagram</span>
+        <button type="button" class="arch-modal-close" data-arch-modal-close aria-label="Close">&times;</button>
+      </header>
+      <div id="arch-modal-body" class="arch-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    (function () {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "dark",
+        securityLevel: "loose",
+        themeVariables: {
+          fontFamily: "DM Sans, system-ui, sans-serif",
+          primaryColor: "#1e293b",
+          primaryTextColor: "#f1f5f9",
+          primaryBorderColor: "#475569",
+          lineColor: "#94a3b8",
+          secondaryColor: "#0f172a",
+          tertiaryColor: "#020617",
+          background: "#0b0e14",
+          mainBkg: "#1a2332",
+          nodeBorder: "#475569",
+          clusterBkg: "#111827",
+          clusterBorder: "#334155",
+          titleColor: "#e2e8f0",
+          edgeLabelBackground: "#1e293b",
+        },
+        flowchart: { htmlLabels: true, curve: "basis" },
+        sequence: { actorMargin: 50, messageMargin: 30 },
+      });
+
+      function renderMermaidIn(scope) {
+        var blocks = scope.querySelectorAll(".mermaid:not([data-processed])");
+        if (!blocks.length) return Promise.resolve();
+        return mermaid.run({ nodes: Array.from(blocks) });
+      }
+
+      function ensureMermaidRendered(viz) {
+        var det = viz.closest("details.project");
+        var mEl = viz.querySelector(".mermaid");
+        if (!mEl) return Promise.resolve();
+        if (mEl.getAttribute("data-processed")) return Promise.resolve();
+        if (!det) return Promise.resolve();
+        return renderMermaidIn(det);
+      }
+
+      var archModal = document.getElementById("arch-modal");
+      var archModalBody = document.getElementById("arch-modal-body");
+      var archCloseBtns = document.querySelectorAll("[data-arch-modal-close]");
+
+      function openArchModalFromButton(btn) {
+        var viz = btn.closest(".viz-arch");
+        if (!viz || !archModal || !archModalBody) return;
+
+        ensureMermaidRendered(viz)
+          .then(function () {
+            var svg = viz.querySelector(".mermaid svg");
+            if (!svg) {
+              window.alert("The diagram is not ready yet. Open this project section and try again.");
+              return;
+            }
+            archModalBody.innerHTML = "";
+            var clone = svg.cloneNode(true);
+            clone.removeAttribute("width");
+            clone.removeAttribute("height");
+            clone.style.maxWidth = "min(1600px, 94vw)";
+            clone.style.width = "auto";
+            clone.style.height = "auto";
+            clone.setAttribute("role", "img");
+            clone.setAttribute("aria-label", "Enlarged architecture diagram");
+            archModalBody.appendChild(clone);
+            archModal.removeAttribute("hidden");
+            document.body.style.overflow = "hidden";
+            var closeBtn = archModal.querySelector(".arch-modal-close");
+            if (closeBtn) closeBtn.focus();
+          })
+          .catch(function (e) {
+            console.warn("Mermaid before enlarge:", e);
+            window.alert("Could not render the diagram. Try again after the section has fully opened.");
+          });
+      }
+
+      function closeArchModal() {
+        if (!archModal || !archModalBody) return;
+        archModal.setAttribute("hidden", "");
+        archModalBody.innerHTML = "";
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-arch-expand]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          openArchModalFromButton(btn);
+        });
+      });
+
+      archCloseBtns.forEach(function (el) {
+        el.addEventListener("click", closeArchModal);
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && archModal && !archModal.hasAttribute("hidden")) {
+          closeArchModal();
+        }
+      });
+
+      document.querySelectorAll("details.project").forEach(function (det) {
+        function onToggle() {
+          if (!det.open) return;
+          renderMermaidIn(det).catch(function (e) {
+            console.warn("Mermaid render:", e);
+          });
+        }
+        det.addEventListener("toggle", onToggle);
+        if (det.open) onToggle();
+      });
+
+      document.querySelectorAll("[data-carousel]").forEach(function (root) {
+        var slides = Array.prototype.slice.call(root.querySelectorAll("[data-carousel-slide]"));
+        var nextBtn = root.querySelector("[data-carousel-next]");
+        var counter = root.querySelector("[data-carousel-counter]");
+        if (!slides.length || !nextBtn) return;
+
+        if (slides.length <= 1) {
+          nextBtn.hidden = true;
+          if (counter) counter.hidden = true;
+          slides[0].classList.add("is-active");
+          slides[0].setAttribute("aria-hidden", "false");
+          return;
+        }
+
+        var i = 0;
+        var alts = slides.map(function (img) {
+          return img.getAttribute("alt") || "Screenshot";
+        });
+
+        function apply() {
+          slides.forEach(function (img, idx) {
+            var active = idx === i;
+            img.classList.toggle("is-active", active);
+            img.setAttribute("aria-hidden", active ? "false" : "true");
+            img.setAttribute("alt", alts[idx]);
+          });
+          nextBtn.setAttribute(
+            "aria-label",
+            "Next screenshot (" + (i + 1) + " of " + slides.length + ")"
+          );
+          if (counter) {
+            counter.hidden = false;
+            counter.textContent = i + 1 + " / " + slides.length;
+          }
+        }
+
+        nextBtn.addEventListener("click", function () {
+          i = (i + 1) % slides.length;
+          apply();
+        });
+
+        apply();
+      });
+    })();
+  </script>
+</body>
+</html>
